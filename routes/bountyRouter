@@ -1,0 +1,40 @@
+const express = require('express');
+const bountyRouter = express.Router();
+
+
+const { v4: uuidv4 } = require("uuid");
+
+bounties = [
+  {
+    id: uuidv4(),
+    firstName: "Sunny",
+    lastName: "Stacy",
+    living: true,
+    bountyAmount: 500,
+    type: "jedi",
+  },
+];
+
+
+bountyRouter.route('/')
+    .get((req, res) => {
+        res.send(bounties);
+    })
+    .post((req, res) => {
+        const newBounty = req.body;
+
+        if (
+          newBounty.hasOwnProperty("firstName") &&
+          newBounty.hasOwnProperty("lastName") &&
+          newBounty.hasOwnProperty("living") &&
+          newBounty.hasOwnProperty("bountyAmount") &&
+          newBounty.hasOwnProperty("type")
+        ) {
+          bounties.push(newBounty);
+          res.status(200).send(`You successfully added ${newBounty}`);
+        } else {
+          res.status(500).send("Required Fields Not Filled In Correctly");
+        }
+    })
+
+    module.exports = bountyRouter;
