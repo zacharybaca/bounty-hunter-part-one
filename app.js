@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 
-app.use('/bounties', require('./routes/bountyRouter'));
+app.use('/bounty', require('./routes/bountyRouter'));
 
 
 // Starts The Server

@@ -4,7 +4,7 @@ const bountyRouter = express.Router();
 
 const { v4: uuidv4 } = require("uuid");
 
-bounties = [
+const bounties = [
   {
     id: uuidv4(),
     firstName: "Sunny",
@@ -23,6 +23,8 @@ bountyRouter.route('/')
     .post((req, res) => {
         const newBounty = req.body;
 
+        newBounty.id = uuidv4();
+
         if (
           newBounty.hasOwnProperty("firstName") &&
           newBounty.hasOwnProperty("lastName") &&
@@ -35,6 +37,38 @@ bountyRouter.route('/')
         } else {
           res.status(500).send("Required Fields Not Filled In Correctly");
         }
+    })
+
+bountyRouter.route('/:id')
+    .put((req, res) => {
+      const id = req.params.id;
+
+      if (!id) {
+        res.status(500).send("Please Provide The ID of The Item That Needs Updated");
+      }
+
+      const itemToBeUpdated = bounties.findIndex((bounty) => bounty.id === id);
+
+      if (!itemToBeUpdated) {
+        res.status(404).send("The Provided ID Is Not Assigned To Any Items");
+      }
+
+      const updatedItem = Object.assign(bounties[itemToBeUpdated], req.body);
+
+      res.send(updatedItem);
+    })
+    .delete((req, res) => {
+      const id = req.params.id;
+
+      if (!id) {
+        res.status(500).send("Please Provide The ID of The Item That Needs Deleted");
+      }
+
+      const itemToBeDeleted = bounties.findIndex((bounty) => bounty.id === id);
+
+      bounties.splice(itemToBeDeleted, 1);
+
+      res.send("Item Has Been Deleted Successfully");
     })
 
     module.exports = bountyRouter;
