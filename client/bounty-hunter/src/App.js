@@ -8,14 +8,14 @@ function App() {
   
 
   const getBounties = async () => {
-    const response = await fetch('/bounty')
+    const response = await fetch('/api/bounty')
     const data = await response.json();
 
     setBounties(data);
   }
 
   const addBounty = async (newBounty) => {
-    const response = await fetch('/bounty', {
+    const response = await fetch('/api/bounty', {
       method: "POST",
       body: JSON.stringify(newBounty)
     })
