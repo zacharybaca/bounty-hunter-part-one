@@ -48,7 +48,7 @@ export default function Form(props) {
                         <option value="jedi">Jedi</option>
                     </optgroup>
                 </select>
-                <button type="submit" id="add-bounty-button">Add Bounty</button>
+                <button type="submit" id="add-bounty-button">{props.bttnText}</button>
             </form>
         </div>
     )
