@@ -33,8 +33,8 @@ function App() {
 
   return (
     <div id="app-container">
-      <h1>Bounty Hunter Tracker Application</h1>
-      <Form submitBounty={addBounty} bttnText="Add Bounty"/>
+      <h1 id="app-heading">Bounty Hunter Tracker Application</h1>
+      <Form addBounty={addBounty} bttnText="Add Bounty"/>
       <Bounties submitBounty={addBounty} bounties={bounties}/>
     </div>
   );
