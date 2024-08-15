@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import "./form.css";
 
 
-export default function Form() {
+export default function Form(props) {
     const initialInputs = {
-        firstName: "",
-        lastName: "",
-        living: false,
-        bountyAmount: "",
-        type: ""
+        firstName: props.firstName || "",
+        lastName: props.lastName || "",
+        living: props.living || false,
+        bountyAmount: props.bountyAmount || "",
+        type: props.type || ""
     }
 
     const [inputs, setInputs] = useState(initialInputs);
@@ -21,6 +21,7 @@ export default function Form() {
             [name]: type === "checkbox" ? checked : value
         }))
     }
+
     return (
         <div id="form-container">
             <form id="bounty-form" name="bountyForm">
