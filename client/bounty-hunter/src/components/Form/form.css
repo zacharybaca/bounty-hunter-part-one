@@ -1,0 +1,29 @@
+#bounty-form {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    width: 30%;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: whitesmoke;
+}
+
+label {
+    font-weight: 800;
+}
+
+input, select, label {
+    padding-top: 2%;
+    font-size: 12px;
+}
+
+optgroup {
+    font-size: 13px;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+    min-width: 100%;
+    box-sizing: border-box;
+}
