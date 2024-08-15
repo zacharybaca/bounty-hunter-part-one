@@ -21,6 +21,13 @@ optgroup {
     font-size: 13px;
 }
 
+#add-bounty-button {
+    display: block;
+    margin: auto;
+    width: 50%;
+    margin-top: 1%;
+}
+
 #form-container {
     display: flex;
     justify-content: center;
