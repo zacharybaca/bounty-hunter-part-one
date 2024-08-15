@@ -22,8 +22,14 @@ export default function Form(props) {
         }))
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        props.addBounty(inputs);
+        setInputs(initialInputs);
+    }
+
     return (
-        <div id="form-container">
+        <div id="form-container" onSubmit={handleSubmit}>
             <form id="bounty-form" name="bountyForm">
                 <label htmlFor="firstName">Enter Bounty's First Name: </label>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name" value={inputs.firstName} onChange={handleChange}/>
@@ -42,6 +48,7 @@ export default function Form(props) {
                         <option value="jedi">Jedi</option>
                     </optgroup>
                 </select>
+                <button type="submit" id="add-bounty-button">Add Bounty</button>
             </form>
         </div>
     )
