@@ -17,6 +17,9 @@ input, select, label {
     font-size: 12px;
 }
 
+input, select {
+    padding-bottom: 2%;
+}
 optgroup {
     font-size: 13px;
 }
@@ -25,7 +28,14 @@ optgroup {
     display: block;
     margin: auto;
     width: 50%;
-    margin-top: 1%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+#add-bounty-button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
 }
 
 #form-container {

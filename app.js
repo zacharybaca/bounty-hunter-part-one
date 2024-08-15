@@ -5,10 +5,10 @@ const app = express();
 app.use(express.json());
 
 
-app.use('/api/bounty', require('./routes/bountyRouter'));
+app.use('/api/bounties', require('./routes/bountyRouter'));
 
 
 // Starts The Server
-app.listen(3000, () => {
-    console.log('Server Listening on Port 3000')
+app.listen(9000, () => {
+    console.log('Server Listening on Port 9000')
 });

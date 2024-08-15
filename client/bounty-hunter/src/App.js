@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import Form from "./components/Form/Form";
-import Bounties from "./components/Bounties/Bounties";
+import Form from "./components/Form/Form.js";
+import Bounties from "./components/Bounties/Bounties.js";
 import './App.css';
 
 function App() {
@@ -8,14 +9,14 @@ function App() {
   
 
   const getBounties = async () => {
-    const response = await fetch('/api/bounty')
+    const response = await fetch('/api/bounties');
     const data = await response.json();
-
+    console.log(data);
     setBounties(data);
   }
 
   const addBounty = async (newBounty) => {
-    const response = await fetch('/api/bounty', {
+    const response = await fetch('/', {
       method: "POST",
       body: JSON.stringify(newBounty)
     })

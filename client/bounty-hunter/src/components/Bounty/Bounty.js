@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Form from '../Form/Form';
+import Form from '../Form/Form.js';
 import "./bounty.css";
 
 
 export default function Bounty(props) {
     const [showForm, setShowForm] = useState(false);
-
+    console.log('Props: ', props)
 
     return (
         <div id="bounty-container">

@@ -13,6 +13,14 @@ const bounties = [
     bountyAmount: 500,
     type: "jedi",
   },
+  {
+    id: uuidv4(),
+    firstName: "Jethro",
+    lastName: "Stacy",
+    living: true,
+    bountyAmount: 500,
+    type: "jedi",
+  },
 ];
 
 
