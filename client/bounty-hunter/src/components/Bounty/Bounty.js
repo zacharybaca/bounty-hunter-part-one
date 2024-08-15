@@ -18,8 +18,8 @@ export default function Bounty(props) {
                             <h3>`Living: ${bounty.living}`</h3>
                             <h3>`Amount: ${bounty.bountyAmount}`</h3>
                             <h3>`Type: ${bounty.type}`</h3>
-                            <button type="submit">Edit</button>
-                            <button type="button">Delete</button>
+                            <button type="submit">{showForm ? "Submit Edit" : "Edit"}</button>
+                            {showForm ? "" : <button type="button">Delete</button>}
                             </>    
                     </li>
                     }
