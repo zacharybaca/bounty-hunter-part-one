@@ -16,7 +16,7 @@ function App() {
   }
 
   const addBounty = async (newBounty) => {
-    const response = await fetch('/', {
+    const response = await fetch('/api/bounties', {
       method: "POST",
       body: JSON.stringify(newBounty)
     })
@@ -24,7 +24,7 @@ function App() {
 
     setBounties(prevState => ({
       ...prevState,
-      data
+      ...data
     }))
   }
 
