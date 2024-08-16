@@ -3,8 +3,10 @@ import "./bounties.css";
 import Bounty from "../Bounty/Bounty.js";
 
 export default function Bounties(props) {
+  console.log('PROPS: ', props.bounties[0].firstName)
   return (
     <div id="bounties-container">
+      {props.bounties[0].firstName ? 
       <ul id="bounty-list">
         {props.bounties.map((bounty) => (
           <li key={bounty.id}>
@@ -18,6 +20,8 @@ export default function Bounties(props) {
           </li>
         ))}
       </ul>
+      : <h1>No Bounties Recorded</h1>
+        }
     </div>
   );
 }
