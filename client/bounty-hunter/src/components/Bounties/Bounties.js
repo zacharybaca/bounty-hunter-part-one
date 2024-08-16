@@ -3,7 +3,6 @@ import "./bounties.css";
 import Bounty from "../Bounty/Bounty.js";
 
 export default function Bounties(props) {
-  console.log('PROPS: ', props.bounties[0].firstName)
   return (
     <div id="bounties-container">
       {props.bounties[0].firstName ? 
