@@ -8,6 +8,7 @@
 #bounty-list {
     overflow: scroll;
     max-height: 30vh;
+    min-width: 40%;
     border: 3px solid green;
 }
 #bounty-list li {
