@@ -25,8 +25,9 @@ function App() {
     })
     const data = await response.json();
 
-    setBounties(prevState => ([{
+    setBounties(prevState => ([
       ...prevState,
+      {
       ...data
     }]))
   }
