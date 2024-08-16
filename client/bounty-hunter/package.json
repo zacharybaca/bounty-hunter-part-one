@@ -1,6 +1,7 @@
 {
   "name": "bounty-hunter",
   "version": "0.1.0",
+  "proxy": "http://localhost:9000",
   "private": true,
   "dependencies": {
     "react": "^18.3.1",
@@ -31,7 +32,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:9000",
+  
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
