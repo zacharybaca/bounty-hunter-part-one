@@ -16,6 +16,7 @@ export default function Bounties(props) {
               living={bounty.living}
               bountyAmount={bounty.bountyAmount}
               type={bounty.type}
+              deleteBounty={props.deleteBounty}
             />
           </li>
         ))}
