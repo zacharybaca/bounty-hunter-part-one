@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [bounties, setBounties] = useState([]);
   
-
+  // Function To Get All of Bounties
   const getBounties = async () => {
     const response = await fetch('/api/bounties');
     const data = await response.json();
@@ -15,6 +15,7 @@ function App() {
     setBounties(data);
   }
 
+  // Function To Add a Bounty
   const addBounty = async (newBounty) => {
     const response = await fetch('/api/bounties', {
       method: "POST",
@@ -32,6 +33,21 @@ function App() {
     }]))
   }
 
+  // Function To Delete Bounty
+  const deleteBounty = async (id) => {
+    const response = await fetch(`/api/bounties/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: null
+    })
+
+    const data = await response.json();
+
+    setBounties([...data]);
+  }
+
   useEffect(() => {
     getBounties();
   }, [])
@@ -40,7 +56,7 @@ function App() {
     <div id="app-container">
       <h1 id="app-heading">Bounty Hunter Tracker Application</h1>
       <Form submitBounty={addBounty} bttnText="Add Bounty"/>
-      <Bounties bounties={bounties}/>
+      <Bounties bounties={bounties} deleteBounty={deleteBounty}/>
     </div>
   );
 }
