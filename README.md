@@ -1,10 +1,4 @@
-# bounty-hunter-part-one
 
-# bounty-hunter-part-one
-
-Here's a sample README for the GitHub repository "bounty-hunter-part-one":
-
----
 
 # Bounty Hunter - Part One
 
