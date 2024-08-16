@@ -18,14 +18,17 @@ function App() {
   const addBounty = async (newBounty) => {
     const response = await fetch('/api/bounties', {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(newBounty)
     })
     const data = await response.json();
 
-    setBounties(prevState => ({
+    setBounties(prevState => ([{
       ...prevState,
       ...data
-    }))
+    }]))
   }
 
   useEffect(() => {
