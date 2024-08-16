@@ -3,6 +3,7 @@ import "./form.css";
 
 
 export default function Form(props) {
+    console.log('Form Props: ', props)
     const initialInputs = {
         firstName: props.firstName || "",
         lastName: props.lastName || "",
@@ -36,7 +37,7 @@ export default function Form(props) {
                 <label htmlFor="lastName">Enter Bounty's Last Name: </label>
                 <input type="text" id="lastName" name="lastName" placeholder="Last Name" value={inputs.lastName} onChange={handleChange}/>
                 <label htmlFor="living" id="living-label">Is The Bounty Still Alive?: 
-                    <input type="checkbox" id="living" name="living" checked={inputs.living} onChange={handleChange}/>
+                    <input type="checkbox" id="living" name="living" checked={inputs.living} value={inputs.living.checked} onChange={handleChange}/>
                 </label>
                 <label htmlFor="bountyAmount">How Much Is The Bounty Worth?: </label>
                 <input type="number" id="bountyAmount" name="bountyAmount" placeholder="Bounty Amount" value={inputs.bountyAmount} onChange={handleChange}/>

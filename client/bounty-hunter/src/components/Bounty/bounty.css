@@ -1,6 +1,32 @@
 #bounty-container {
     display: flex;
     justify-content: center;
-    width: 50%;
+    gap: 20px;
     border: 2px solid blue;
+}
+
+.heading {
+    font-weight: 800;
+}
+
+#delete-button {
+    padding: 1%;
+    width: 30%;
+}
+
+#delete-button:hover {
+    cursor: pointer;
+    background-color: red;
+    color: whitesmoke;
+}
+
+#edit-button {
+    padding: 1%;
+    width: 30%;
+}
+
+#edit-button:hover {
+    cursor: pointer;
+    font-weight: 800;
+    opacity: 0.5;
 }

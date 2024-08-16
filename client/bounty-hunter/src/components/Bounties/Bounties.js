@@ -5,10 +5,9 @@ import Bounty from "../Bounty/Bounty.js";
 export default function Bounties(props) {
   return (
     <div id="bounties-container">
-      <ul>
+      <ul id="bounty-list">
         {props.bounties.map((bounty) => (
           <li key={bounty.id}>
-            {/* Add a unique key for each list item */}
             <Bounty
               firstName={bounty.firstName}
               lastName={bounty.lastName}

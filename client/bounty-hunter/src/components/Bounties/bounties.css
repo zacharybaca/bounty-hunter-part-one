@@ -4,3 +4,7 @@
     min-width: 100%;
     border: 2px solid black;
 }
+
+#bounty-list li {
+    padding-top: 5%;
+}
