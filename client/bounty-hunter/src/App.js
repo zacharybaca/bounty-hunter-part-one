@@ -33,20 +33,31 @@ function App() {
     }]))
   }
 
-  // Function To Delete Bounty
-  const deleteBounty = async (id) => {
-    const response = await fetch(`/api/bounties/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: null
-    })
+  
+// Function To Delete Bounty
+const deleteBounty = async (id) => {
+  try {
+      const response = await fetch(`/api/bounties/${id}`, {
+          method: "DELETE",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      });
 
-    const data = await response.json();
+      if (!response.ok) {
+          throw new Error('Failed to delete the bounty');
+      }
 
-    setBounties([...data]);
+      // Optionally, check if there is any response content
+      const data = await response.json().catch(() => null);
+
+      setBounties(prevBounties => prevBounties.filter(bounty => bounty.id !== id));
+  } catch (error) {
+      console.error('Error:', error);
+      // Optionally, handle the error in the UI
   }
+}
+
 
   useEffect(() => {
     getBounties();
