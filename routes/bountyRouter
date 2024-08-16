@@ -21,6 +21,14 @@ const bounties = [
     bountyAmount: 500,
     type: "jedi",
   },
+  {
+    id: uuidv4(),
+    firstName: "Tank",
+    lastName: "Stacy",
+    living: false,
+    bountyAmount: 200,
+    type: "sith",
+  },
 ];
 
 
@@ -41,7 +49,7 @@ bountyRouter.route('/')
           newBounty.hasOwnProperty("type")
         ) {
           bounties.push(newBounty);
-          res.status(200).send(`You successfully added ${newBounty}`);
+          res.status(200).send(newBounty);
         } else {
           res.status(500).send("Required Fields Not Filled In Correctly");
         }
@@ -76,7 +84,7 @@ bountyRouter.route('/:id')
 
       bounties.splice(itemToBeDeleted, 1);
 
-      res.send("Item Has Been Deleted Successfully");
+      res.send(bounties);
     })
 
     module.exports = bountyRouter;

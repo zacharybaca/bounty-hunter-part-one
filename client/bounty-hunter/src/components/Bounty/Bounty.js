@@ -5,7 +5,7 @@ import "./bounty.css";
 
 export default function Bounty(props) {
     const [showForm, setShowForm] = useState(false);
-    console.log('Props: ', props)
+    
 
     return (
         <div id="bounty-container">
