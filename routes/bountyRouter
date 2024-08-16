@@ -49,9 +49,9 @@ bountyRouter.route('/')
           newBounty.hasOwnProperty("type")
         ) {
           bounties.push(newBounty);
-          res.status(200).send(newBounty);
+          res.status(201).send(newBounty);
         } else {
-          res.status(500).send("Required Fields Not Filled In Correctly");
+          res.status(400).send("Required Fields Not Filled In Correctly");
         }
     })
 
