@@ -58,6 +58,30 @@ const deleteBounty = async (id) => {
   }
 }
 
+// Function To Edit Bounty
+const editBounty = async (updates, id) => {
+  
+
+  try {
+    const response = await fetch(`/api/bounties/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(updates)
+    });
+
+
+    const data = await response.json().catch(() => null);
+    console.log('Data in Edit: ', data)
+    setBounties(prevBounties => prevBounties.map((bounty) => bounty.id !== id ? bounty : {...data}))
+
+  } catch(error) {
+    console.error("Error: ", error);
+  }
+}
+
+
 
   useEffect(() => {
     getBounties();
@@ -67,7 +91,7 @@ const deleteBounty = async (id) => {
     <div id="app-container">
       <h1 id="app-heading">Bounty Hunter Tracker Application</h1>
       <Form submitBounty={addBounty} bttnText="Add Bounty"/>
-      <Bounties bounties={bounties} deleteBounty={deleteBounty}/>
+      <Bounties bounties={bounties} deleteBounty={deleteBounty} editBounty={editBounty}/>
     </div>
   );
 }

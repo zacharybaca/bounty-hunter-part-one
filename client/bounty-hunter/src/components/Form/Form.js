@@ -5,6 +5,7 @@ import "./form.css";
 export default function Form(props) {
     console.log('Form Props: ', props)
     const initialInputs = {
+        id: props.id || "",
         firstName: props.firstName || "",
         lastName: props.lastName || "",
         living: props.living || false,
@@ -25,8 +26,11 @@ export default function Form(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.submitBounty(inputs);
+        props.submitBounty(inputs, inputs.id);
         setInputs(initialInputs);
+        if (props.toggleForm) {
+            props.toggleForm((prevState) => !prevState);
+        }
     }
 
     return (

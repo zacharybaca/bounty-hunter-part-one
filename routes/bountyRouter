@@ -84,7 +84,7 @@ bountyRouter.route('/:id')
 
       bounties.splice(itemToBeDeleted, 1);
 
-      res.send(bounties);
+      res.status(204).send("Deletion Successful");
     })
 
     module.exports = bountyRouter;
