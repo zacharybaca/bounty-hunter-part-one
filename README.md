@@ -1,6 +1,6 @@
 
 
-# Bounty Hunter - Part One
+# Bounty Hunter Tracker Application
 
 This project is a simple web application that allows users to manage bounties. It is built with a Node.js and Express backend, and a React frontend. The application supports creating, viewing, and managing bounty data.
 
