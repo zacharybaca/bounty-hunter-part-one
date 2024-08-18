@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     min-width: 100%;
-    border: 2px solid black;
 }
 
 #bounty-list {
@@ -10,6 +9,8 @@
     max-height: 30vh;
     min-width: 40%;
     border: 3px solid green;
+    border-radius: 6px;
+    background-color: whitesmoke;
 }
 #bounty-list li {
     padding-top: 5%;

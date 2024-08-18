@@ -7,7 +7,7 @@ export default function Bounties(props) {
   return (
     <div id="bounties-container">
       <ul id="bounty-list">
-        {props.bounties.map((bounty) => (
+        {props.bounties.length === 0 ? <h1>No Bounties Recorded</h1> : props.bounties.map((bounty) => (
           <li key={bounty.id}>
             <Bounty
               id={bounty.id}

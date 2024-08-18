@@ -48,13 +48,9 @@ const deleteBounty = async (id) => {
           throw new Error('Failed to delete the bounty');
       }
 
-      // Optionally, check if there is any response content
-      const data = await response.json().catch(() => null);
-
       setBounties(prevBounties => prevBounties.filter(bounty => bounty.id !== id));
   } catch (error) {
       console.error('Error:', error);
-      // Optionally, handle the error in the UI
   }
 }
 
