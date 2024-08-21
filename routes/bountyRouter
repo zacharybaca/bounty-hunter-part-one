@@ -1,5 +1,6 @@
 const express = require('express');
 const bountyRouter = express.Router();
+const Bounty = require('../models/bounty');
 
 
 const { v4: uuidv4 } = require("uuid");
@@ -33,8 +34,14 @@ const bounties = [
 
 
 bountyRouter.route('/')
-    .get((req, res) => {
-        res.send(bounties);
+    .get(async (req, res, next) => {
+        try {
+          const foundBounties = await Bounty.find()
+          return res.status(200).send(foundBounties)
+        } catch (error) {
+          res.status(500)
+          return next(error)
+        }
     })
     .post((req, res) => {
         const newBounty = req.body;
