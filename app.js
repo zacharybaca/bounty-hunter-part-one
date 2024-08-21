@@ -23,6 +23,12 @@ const connectToMongoDB = async () => {
 
 connectToMongoDB();
 
+// Global Error Handler
+app.use((err, req, res, next) => {
+  console.error(err);
+  return res.send(`Error: ${err}`);
+});
+
 
 // Starts The Server
 app.listen(9000, () => {
