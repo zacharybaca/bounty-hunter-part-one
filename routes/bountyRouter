@@ -7,7 +7,6 @@ const { v4: uuidv4 } = require("uuid");
 
 const bounties = [
   {
-    id: uuidv4(),
     firstName: "Sunny",
     lastName: "Stacy",
     living: true,
@@ -15,7 +14,6 @@ const bounties = [
     type: "jedi",
   },
   {
-    id: uuidv4(),
     firstName: "Jethro",
     lastName: "Stacy",
     living: true,
@@ -23,7 +21,6 @@ const bounties = [
     type: "jedi",
   },
   {
-    id: uuidv4(),
     firstName: "Tank",
     lastName: "Stacy",
     living: false,
@@ -43,23 +40,15 @@ bountyRouter.route('/')
           return next(error)
         }
     })
-    .post((req, res) => {
-        const newBounty = req.body;
-
-        newBounty.id = uuidv4();
-
-        if (
-          newBounty.hasOwnProperty("firstName") &&
-          newBounty.hasOwnProperty("lastName") &&
-          newBounty.hasOwnProperty("living") &&
-          newBounty.hasOwnProperty("bountyAmount") &&
-          newBounty.hasOwnProperty("type")
-        ) {
-          bounties.push(newBounty);
-          res.status(201).send(newBounty);
-        } else {
-          res.status(400).send("Required Fields Not Filled In Correctly");
-        }
+    .post(async (req, res, next) => {
+      try {
+        const newBounty = new Bounty(req.body);
+        const savedBounty = await newBounty.save();
+        return res.status(201).send(savedBounty);
+      } catch (error) {
+        res.status(500);
+        return next(error);
+      }
     })
 
 bountyRouter.route('/:id')
