@@ -69,18 +69,18 @@ bountyRouter.route('/:id')
 
       res.send(updatedItem);
     })
-    .delete((req, res) => {
-      const id = req.params.id;
+    .delete(async (req, res, next) => {
+      try {
+        const id = req.params.id;
 
-      if (!id) {
-        res.status(500).send("Please Provide The ID of The Item That Needs Deleted");
-      }
+        const itemToBeDeleted = await Bounty.findOneAndDelete({_id: id});
 
-      const itemToBeDeleted = bounties.findIndex((bounty) => bounty.id === id);
-
-      bounties.splice(itemToBeDeleted, 1);
-
-      res.status(204).send("Deletion Successful");
+        return res.status(200).send(`You Have Successfully Deleted ${itemToBeDeleted.firstName}`);
+        } catch (error) {
+          res.status(500);
+          return next(error);
+        }
+      
     })
 
     module.exports = bountyRouter;
