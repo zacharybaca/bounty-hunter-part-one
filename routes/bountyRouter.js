@@ -3,8 +3,6 @@ const bountyRouter = express.Router();
 const Bounty = require('../models/bounty');
 
 
-const { v4: uuidv4 } = require("uuid");
-
 const bounties = [
   {
     firstName: "Sunny",
@@ -52,22 +50,19 @@ bountyRouter.route('/')
     })
 
 bountyRouter.route('/:id')
-    .put((req, res) => {
-      const id = req.params.id;
-
-      if (!id) {
-        res.status(500).send("Please Provide The ID of The Item That Needs Updated");
+    .put(async (req, res, next) => {
+      try {
+        const id = req.params.id;
+        const itemToBeUpdated = await Bounty.findByIdAndUpdate(
+          id,
+          req.body,
+          { new: true }
+        )
+        return res.status(201).send(itemToBeUpdated);
+      } catch (error) {
+        res.status(500);
+        return next(error);
       }
-
-      const itemToBeUpdated = bounties.findIndex((bounty) => bounty.id === id);
-
-      if (!itemToBeUpdated) {
-        res.status(404).send("The Provided ID Is Not Assigned To Any Items");
-      }
-
-      const updatedItem = Object.assign(bounties[itemToBeUpdated], req.body);
-
-      res.send(updatedItem);
     })
     .delete(async (req, res, next) => {
       try {
