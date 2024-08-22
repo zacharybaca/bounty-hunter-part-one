@@ -48,7 +48,7 @@ const deleteBounty = async (id) => {
           throw new Error('Failed to delete the bounty');
       }
 
-      setBounties(prevBounties => prevBounties.filter(bounty => bounty.id !== id));
+      setBounties(prevBounties => prevBounties.filter(bounty => bounty._id !== id));
   } catch (error) {
       console.error('Error:', error);
   }
@@ -70,7 +70,7 @@ const editBounty = async (updates, id) => {
 
     const data = await response.json().catch(() => null);
     console.log('Data in Edit: ', data)
-    setBounties(prevBounties => prevBounties.map((bounty) => bounty.id !== id ? bounty : {...data}))
+    setBounties(prevBounties => prevBounties.map((bounty) => bounty._id !== id ? bounty : {...data}))
 
   } catch(error) {
     console.error("Error: ", error);

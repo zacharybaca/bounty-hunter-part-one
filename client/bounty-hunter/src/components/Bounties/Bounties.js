@@ -8,9 +8,9 @@ export default function Bounties(props) {
     <div id="bounties-container">
       <ul id="bounty-list">
         {props.bounties.length === 0 ? <h1>No Bounties Recorded</h1> : props.bounties.map((bounty) => (
-          <li key={bounty.id}>
+          <li key={bounty._id}>
             <Bounty
-              id={bounty.id}
+              id={bounty._id}
               firstName={bounty.firstName}
               lastName={bounty.lastName}
               living={bounty.living}
