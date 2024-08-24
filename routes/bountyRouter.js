@@ -3,30 +3,6 @@ const bountyRouter = express.Router();
 const Bounty = require('../models/bounty');
 
 
-const bounties = [
-  {
-    firstName: "Sunny",
-    lastName: "Stacy",
-    living: true,
-    bountyAmount: 500,
-    type: "jedi",
-  },
-  {
-    firstName: "Jethro",
-    lastName: "Stacy",
-    living: true,
-    bountyAmount: 500,
-    type: "jedi",
-  },
-  {
-    firstName: "Tank",
-    lastName: "Stacy",
-    living: false,
-    bountyAmount: 200,
-    type: "sith",
-  },
-];
-
 
 bountyRouter.route('/')
     .get(async (req, res, next) => {
@@ -77,5 +53,19 @@ bountyRouter.route('/:id')
         }
       
     })
+
+    bountyRouter.route('/type')
+      .get(async (req, res, next) => {
+        try {
+          const type = req.query.type;
+
+          const foundTypes = await Bounty.find({ type });
+
+          return res.status(200).send(foundTypes);
+        } catch (error) {
+          res.status(500);
+          return next(error);
+        }
+      })
 
     module.exports = bountyRouter;
