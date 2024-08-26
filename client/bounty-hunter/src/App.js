@@ -77,7 +77,19 @@ const editBounty = async (updates, id) => {
   }
 }
 
+// Function to Display All Jedis
+const getJedis = async () => {
+  const res = await fetch('api/bounties/type?type=jedi');
+  const data = await res.json();
+  setBounties(data);
+}
 
+// Function to Display All Siths
+const getSiths = async () => {
+  const res = await fetch('api/bounties/type?type=sith');
+  const data = await res.json();
+  setBounties(data);
+}
 
   useEffect(() => {
     getBounties();
@@ -86,7 +98,7 @@ const editBounty = async (updates, id) => {
   return (
     <div id="app-container">
       <h1 id="app-heading">Bounty Hunter Tracker Application</h1>
-      <Form submitBounty={addBounty} bttnText="Add Bounty"/>
+      <Form submitBounty={addBounty} getJedis={getJedis} getSiths={getSiths} getAllBounties={getBounties} bttnText="Add Bounty"/>
       <Bounties bounties={bounties} deleteBounty={deleteBounty} editBounty={editBounty}/>
     </div>
   );

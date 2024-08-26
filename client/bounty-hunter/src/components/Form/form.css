@@ -32,10 +32,34 @@ optgroup {
     border-radius: 10px;
 }
 
-#add-bounty-button:hover {
+#add-bounty-button:hover, #get-all-jedis-button:hover, #get-all-siths-button:hover, #get-all-bounties-button:hover {
     cursor: pointer;
     background-color: black;
     color: whitesmoke;
+}
+
+#get-all-jedis-button {
+    display: block;
+    margin: auto;
+    width: 50%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+#get-all-siths-button {
+    display: block;
+    margin: auto;
+    width: 50%;
+    margin-top: 2%;
+    border-radius: 10px;
+}
+
+#get-all-bounties-button {
+    display: block;
+    margin: auto;
+    width: 50%;
+    margin-top: 2%;
+    border-radius: 10px;
 }
 
 #form-container {

@@ -54,6 +54,9 @@ export default function Form(props) {
                     </optgroup>
                 </select>
                 <button type="submit" id="add-bounty-button">{props.bttnText}</button>
+                <button type="button" id="get-all-jedis-button" onClick={props.getJedis}>Display All Jedis</button>
+                <button type="button" id="get-all-siths-button" onClick={props.getSiths}>Display All Siths</button>
+                <button type="button" id="get-all-bounties-button" onClick={props.getAllBounties}>Display All Bounties</button>
             </form>
         </div>
     )
