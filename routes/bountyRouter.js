@@ -68,4 +68,18 @@ bountyRouter.route('/:id')
         }
       })
 
+    bountyRouter.route('/living')
+      .get(async (req, res, next) => {
+        try {
+          const living = req.query.living;
+
+          const foundLiving = await Bounty.find({ living });
+
+          return res.status(200).send(foundLiving);
+        } catch (error) {
+          res.status(500);
+          return next(error);
+        }
+      })
+
     module.exports = bountyRouter;

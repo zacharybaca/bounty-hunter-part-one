@@ -3,7 +3,6 @@ import "./form.css";
 
 
 export default function Form(props) {
-    console.log('Form Props: ', props)
     const initialInputs = {
         id: props.id || "",
         firstName: props.firstName || "",
@@ -14,6 +13,32 @@ export default function Form(props) {
     }
 
     const [inputs, setInputs] = useState(initialInputs);
+
+    const [selectedFilter, setSelectedFilter] = useState("");
+
+    function handleFilter(e) {
+        const { value } = e.target;
+
+        setSelectedFilter(value);
+
+        if (value === "all") {
+            props.getAllBounties();
+        }
+        else if (value === "sith") {
+            props.getSiths();
+        }
+        else if (value === "jedi") {
+            props.getJedis();
+        }
+        else if (value === "living") {
+            props.getLiving();
+        }
+        else if (value === "deceased") {
+            props.getDeceased();
+        }
+
+        setSelectedFilter("");
+    }
 
     function handleChange(e) {
         const { name, value, type, checked } = e.target;
@@ -54,9 +79,17 @@ export default function Form(props) {
                     </optgroup>
                 </select>
                 <button type="submit" id="add-bounty-button">{props.bttnText}</button>
-                <button type="button" id="get-all-jedis-button" onClick={props.getJedis}>Display All Jedis</button>
-                <button type="button" id="get-all-siths-button" onClick={props.getSiths}>Display All Siths</button>
-                <button type="button" id="get-all-bounties-button" onClick={props.getAllBounties}>Display All Bounties</button>
+                <label htmlFor="filterBounty">Select A Filter:</label>
+                <select id="filterBounty" name="filterBounty" value={selectedFilter} onChange={handleFilter}>
+                    <optgroup>
+                        <option defaultValue value="">Filter Your List of Bounties</option>
+                        <option value="all">Display All Bounties</option>
+                        <option value="sith">Display All Siths</option>
+                        <option value="jedi">Display All Jedis</option>
+                        <option value="living">Display All Living Bounties</option>
+                        <option value="deceased">Display All Deceased Bounties</option>
+                    </optgroup>
+                </select>
             </form>
         </div>
     )

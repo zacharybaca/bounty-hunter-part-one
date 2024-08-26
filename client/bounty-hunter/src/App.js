@@ -11,7 +11,6 @@ function App() {
   const getBounties = async () => {
     const response = await fetch('/api/bounties');
     const data = await response.json();
-    console.log(data);
     setBounties(data);
   }
 
@@ -56,8 +55,6 @@ const deleteBounty = async (id) => {
 
 // Function To Edit Bounty
 const editBounty = async (updates, id) => {
-  
-
   try {
     const response = await fetch(`/api/bounties/${id}`, {
       method: "PUT",
@@ -66,7 +63,6 @@ const editBounty = async (updates, id) => {
       },
       body: JSON.stringify(updates)
     });
-
 
     const data = await response.json().catch(() => null);
     console.log('Data in Edit: ', data)
@@ -91,6 +87,20 @@ const getSiths = async () => {
   setBounties(data);
 }
 
+// Function to Display All Living Bounties
+const getLiving = async () => {
+  const res = await fetch('api/bounties/living?living=true');
+  const data = await res.json();
+  setBounties(data);
+}
+
+// Function to Display All Deceased Bounties
+const getDeceased = async () => {
+  const res = await fetch('api/bounties/living?living=false');
+  const data = await res.json();
+  setBounties(data);
+}
+
   useEffect(() => {
     getBounties();
   }, [])
@@ -98,7 +108,7 @@ const getSiths = async () => {
   return (
     <div id="app-container">
       <h1 id="app-heading">Bounty Hunter Tracker Application</h1>
-      <Form submitBounty={addBounty} getJedis={getJedis} getSiths={getSiths} getAllBounties={getBounties} bttnText="Add Bounty"/>
+      <Form submitBounty={addBounty} getJedis={getJedis} getSiths={getSiths} getAllBounties={getBounties} getLiving={getLiving} getDeceased={getDeceased} bttnText="Add Bounty"/>
       <Bounties bounties={bounties} deleteBounty={deleteBounty} editBounty={editBounty}/>
     </div>
   );
