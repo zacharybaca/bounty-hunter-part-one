@@ -10,12 +10,13 @@ This project is a simple web application that allows users to manage bounties. I
 - **View Bounties**: All bounties are displayed in a list.
 - **Delete Bounties**: Users can remove bounties from the system.
 - **Edit Bounties**: Users can update existing bounty information.
+- **View Bounties By Type**: Users can view bounties based on their type.
 
 ## Technologies Used
 
 - **Frontend**: React
 - **Backend**: Node.js, Express
-- **Database**: In-memory array (for development/testing purposes)
+- **Database**: MongoDB, Mongoose
 
 ## Getting Started
 
@@ -68,16 +69,4 @@ The application will be running on `http://localhost:3000` by default, with the 
 - **POST /api/bounties**: Add a new bounty.
 - **DELETE /api/bounties/:id**: Delete a bounty by ID.
 - **PUT /api/bounties/:id**: Update a bounty by ID.
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contact
-
-If you have any questions, feel free to open an issue in this repository.
-
+- **GET /api/bounties/type**: Get Bounties by Their Type.
